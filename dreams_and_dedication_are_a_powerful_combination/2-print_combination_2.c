@@ -1,15 +1,15 @@
-#include "my_functions.h"
+#include "my_functions.h" /*contains prototypes*/
 
 void print_combination_2(void)
 {
-  int i,j;
+  int i,j; /*for loops*/
   for (i=0;i<9;i++)
     {
-      for (j=i+1;j<10;j++)
+      for (j=i+1;j<10;j++) /*note i+1*/
         {
           print_number(i);
           print_number(j);
-          if (!(i==8 && j==9))
+          if (!(i==8 && j==9)) /*,' '*/
             {
               print_char(',');
               print_char(' ');
