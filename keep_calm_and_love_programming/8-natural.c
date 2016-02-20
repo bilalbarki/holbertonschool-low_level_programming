@@ -5,7 +5,7 @@ int main(void)
   int i,sum;
   sum=0;
   /*|| = or*/
-  for (i=3;i<1024;i++){
+  for (i=3;i<1024;i++){ /*1024 not included*/
     if (i%3==0 || i%5==0){
       sum=sum+i;
     }

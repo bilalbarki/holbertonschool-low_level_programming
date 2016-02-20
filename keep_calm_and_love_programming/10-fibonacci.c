@@ -7,12 +7,11 @@ int main(void)
   prevprev=0;
   prev=1;
   number=0;
-  while (number<4000001){
+  while (number<4000001){ /*repeat till 4000000*/
     number=prevprev+prev;
     prevprev=prev;
     prev=number;
-    /*printf("%d\n",number);*/
-    if (number%2==0){
+    if (number%2==0){ /*if factor of 2*/
       sum=sum+number;
     }
   }

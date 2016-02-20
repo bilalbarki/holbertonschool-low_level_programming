@@ -2,7 +2,7 @@
 
 void print_to_98(int n)
 {
-  if (n<99){
+  if (n<99){ /*if less than 99*/
     for (;n<99;n++){
       printf("%d",n);
       if (n<98){
@@ -10,7 +10,7 @@ void print_to_98(int n)
       }
     }
   }
-  else{
+  else{ /*if greater than 99*/
     for (;n>97;n--){
       printf("%d",n);
       if (n>98){
