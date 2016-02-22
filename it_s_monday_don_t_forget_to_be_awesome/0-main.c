@@ -13,5 +13,14 @@ int main(void)
   printf("%c\n", c);
   c = lowercase('{');
   printf("%c\n", c);
-  return (0);
+  c = lowercase('@');
+  printf("%c\n", c);
+  c = lowercase('[');
+  printf("%c\n", c);
+  c = lowercase('Z');
+  printf("%c\n", c);
+  c = lowercase('z');
+  printf("%c\n", c);
+  
+return (0);
 }
