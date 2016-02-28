@@ -2,6 +2,8 @@
 
 void triangles_in_the_term(int h, int n){
   int i, j, l;
+  if (h<=0 || n<=0)
+    return;
   while(n!=0){ /*outer loop for n times*/
     l=h;
     for (i=1;i<=h;i++){ /*vertical*/
