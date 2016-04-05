@@ -5,7 +5,7 @@
 #include <string.h>
 int main(int ac, char **av){
   int i, x, comma, sflag;
-  int a[255]={0};
+  int a[128]={0};
   sflag=1;
   for( i=1, comma=0; i<ac ; i++ ){
     if (*av[i]=='-' && *(av[i]+1)=='-'){
