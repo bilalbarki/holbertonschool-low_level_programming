@@ -1,3 +1,4 @@
+/*prints all arguments it receives*/
 #include <stdio.h>
 
 int main(int ac, char **av){

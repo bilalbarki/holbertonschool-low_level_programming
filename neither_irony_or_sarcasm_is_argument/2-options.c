@@ -1,3 +1,6 @@
+/*prints options, repeated not printed*/
+/*--<space> means no more options ahead*/
+/*--<string> -<single char>*/
 #include <stdio.h>
 #include <string.h>
 int main(int ac, char **av){
@@ -12,7 +15,7 @@ int main(int ac, char **av){
 	a[(int)*(av[i]+2)]=1;
       }
       for( x=1; x<i ; x++ ){
-	if ( !( strcmp(av[i], av[x]) )/* || !( strcmp(av[i]+1, av[x]) )*/ ){
+	if ( !( strcmp(av[i], av[x]) ) ){
 	  sflag=0;
 	  break;
 	}
@@ -26,12 +29,6 @@ int main(int ac, char **av){
       for (x=1;*(av[i]+x)!='\0';x++){
 	if ( a[(int)*(av[i]+x)]==0 ){
 	  if (comma!=0) printf(", ");
-	  /*for( x=1; x<i ; x++ ){
-	  if ( !( strcmp(av[i], av[x]+1) ) ){
-	      sflag=0;
-	      break;
-	    }
-	    }*/
 	  printf("%c", *(av[i]+x));
 	  a[(int)*(av[i]+x)]=1;
 	  sflag=1;
