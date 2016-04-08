@@ -1,0 +1,19 @@
+CFLAGS := -Wall -Werror -Wextra -pedantic
+CFILES := op_functions.c get_op_func.c main.c
+
+all: 2-calculator
+
+2-calculator: op_functions.o get_op_func.o main.o
+	gcc $(CFLAGS) op_functions.o get_op_func.o main.o -o 2-calculator
+
+main.o: main.c
+	gcc $(CFLAGS) -c main.c
+
+get_op_func.o: get_op_func.c
+	gcc $(CFLAGS) -c get_op_func.c
+
+op_functions.o: op_functions.c
+	gcc $(CFLAGS) -c op_functions.c
+
+clean:
+	rm -f op_functions.o get_op_func.o main.o 2-calculator
