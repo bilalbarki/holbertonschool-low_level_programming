@@ -10,12 +10,12 @@ all: libholberton.a
 libholberton.a: $(OBJECTS)
 	ar -rcs libholberton.a $(OBJECTS)
 
-src/%.o:src/%.c
+$(OBJECTS):$(SOURCES)
 	gcc $(CFLAGS) -c $< -o $@
 
 clean: 
 	rm -f $(OBJECTS) libholberton.a
 
 re:
-	make clean
-	make all
+	rm -f $(OBJECTS)
+	make $(OBJECTS)
