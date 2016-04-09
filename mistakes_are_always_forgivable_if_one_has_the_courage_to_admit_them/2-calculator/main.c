@@ -7,10 +7,14 @@ void print_number(int n);
 int (*get_op_func(char c))(int, int);
 
 int main(int ac, char **av){
-  if (ac==4 && get_op_func(*av[2])!=(NULL)){
-    print_number( (*get_op_func(*av[2]))(atoi(av[1]), atoi(av[3])) );
-    print_char('\n');
-    return 0;
+  if (ac==4){
+    int (*p)(int,int);
+    p=*get_op_func(*av[2]);
+    if (*p!=NULL){
+      print_number( (*p)(atoi(av[1]), atoi(av[3])) );
+      print_char('\n');
+      return 0;
+    }
   }
   return 1;
 }
