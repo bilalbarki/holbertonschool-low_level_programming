@@ -14,9 +14,7 @@ int check2(int a)
 int main(void)
 {
   int array[6] = {98, 402, 35, 402, 1024, 64};
-
-  printf(
-	 "%d\n", advanced_search(array, 6, &check));
+  printf("%d\n", advanced_search(array, 6, &check));
   printf("%d\n", advanced_search(array, 6, &check2));
   return (0);
 }
