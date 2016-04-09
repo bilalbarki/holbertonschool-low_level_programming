@@ -1,3 +1,6 @@
+/*calc add, sub, mul, div 
+mod return functions*/
+
 int op_add(int a, int b){
   return a+b;
 }

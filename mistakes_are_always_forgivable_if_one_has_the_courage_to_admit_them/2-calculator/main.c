@@ -1,4 +1,6 @@
+/*calc main file*/
 #include <stdlib.h>
+#include <unistd.h>
 int print_char(char c);
 void print_number(int n);
 
@@ -12,9 +14,7 @@ int main(int ac, char **av){
   }
   return 1;
 }
-
-#include <unistd.h>
-
+/*prints one char at a time*/
 int print_char(char c)
 {
   return (write(1, &c, 1));
