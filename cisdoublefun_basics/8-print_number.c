@@ -2,6 +2,8 @@ int print_char(char c);
 int countdigits(int n);
 void print_digits(int n, int count);
 
+/*takes an integer and prints it*/
+
 void print_number(int n){
   int count;
   if (n==0){ /*if n is 0 print 0 and return*/
@@ -22,10 +24,9 @@ int countdigits(int n){
 
 /*extract and print digits*/
 void print_digits(int n, int count){
-  int ncopy, temp;
+  int ncopy, temp, t;
   temp=0;
   for (;count>0; count--){
-    int t;
     ncopy=n;
     for (t=count;t>1;t--) ncopy/=10;
     t=ncopy-(temp*10);
