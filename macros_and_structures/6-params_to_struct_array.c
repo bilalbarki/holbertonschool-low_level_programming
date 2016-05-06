@@ -24,7 +24,7 @@ struct Param *params_to_struct_array(int ac, char **av){
     param[i].tab=string_split(av[i]);
     }
     param[ac].str=NULL;
-  return param;
+    return param;
 }
 
 
@@ -51,7 +51,8 @@ char **string_split(char *string){
       return NULL;
     }
     split[w_count][j]='\0';
-    for(j=0;string[i]!='\0' && string[i]!=' ';i++,j++) split[w_count][j]=string[i];
+    for(j=0;string[i]!='\0' && string[i]!=' ';i++,j++) 
+      split[w_count][j]=string[i];
     if (string[i]=='\0') break;
   }
   return split;
