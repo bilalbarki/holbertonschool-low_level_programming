@@ -27,7 +27,7 @@ struct String *string_to_struct(char *str){
   str_object->length=length_string(str);
   str_object->str=malloc( sizeof(char)*str_object->length+1 );
   if (str_object->str==NULL){ 
-    /*free(str_object);*/
+    free(str_object);
     return NULL;
   }
   copy_string(str_object, str);
