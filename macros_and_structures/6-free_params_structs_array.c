@@ -1,6 +1,6 @@
 #include "param_struct.h"
 #include <stdlib.h>
-
+/*frees an array of struct Param*/
 void free_params_structs_array(struct Param *array){
   int i,j;
   for( i=0; array[i].str!=NULL; i++){

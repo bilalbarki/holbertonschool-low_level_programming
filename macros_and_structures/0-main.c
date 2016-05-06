@@ -7,5 +7,4 @@ int main(void)
 
   i = -98;
   printf("i=%d, abs(i)=%d\n", i, ABS(i));
-  return (0);
 }

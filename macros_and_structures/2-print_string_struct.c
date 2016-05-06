@@ -1,10 +1,10 @@
 #include "str_struct.h"
 
 int print_char(char c);
-
 void print_number(int n);
 void print_string(char *str);
 
+/*prints the struct String*/
 void print_string_struct(struct String *str){
   print_string(str->str);
   print_char(',');
@@ -13,6 +13,7 @@ void print_string_struct(struct String *str){
   print_char('\n');
 }
 
+/*prints a number*/
 void print_number(int n)
 {
   int count,i,temp,j,x;
@@ -39,6 +40,7 @@ void print_number(int n)
   while(count>0);
 }
 
+/*prints string*/
 void print_string(char *str){
   int i;
   for (i=0;str[i];i++) print_char(str[i]);

@@ -1,12 +1,14 @@
 #include <stdlib.h>
 #include "str_struct.h"
 
+/*returns string length*/
 int length_string(char *str){
   int count;
   for (count=0;str[count];count++);
   return count;
 }
 
+/*copies string*/
 void copy_string(struct String *str_object, char *str){
   int i;
   for (i=0;str[i];i++){
@@ -15,6 +17,8 @@ void copy_string(struct String *str_object, char *str){
   str_object->str[i]='\0';
 }
 
+/*stores a string and its length in a newly 
+  allocated structure*/
 struct String *string_to_struct(char *str){
   struct String *str_object;
   str_object=malloc( sizeof(struct String) );
