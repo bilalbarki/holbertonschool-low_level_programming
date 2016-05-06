@@ -7,7 +7,6 @@ void copy_string(struct Param *str_object, char *str);
 
 /*stores the program’s parameters in an array of structures 
   and returns the address*/
-
 struct Param *params_to_struct_array(int ac, char **av){
   int i;
   struct Param *param;
@@ -18,6 +17,8 @@ struct Param *params_to_struct_array(int ac, char **av){
     param[i].length=length(av[i]);
     param[i].copy=malloc( sizeof(char) * (param[i].length+1) );
     if (param[i].copy==NULL){
+      for(i--; i>= 0; i--) free(param[i].copy);
+      free(param);
       return NULL;
     }
     copy_string(param+i,av[i]);
@@ -30,7 +31,6 @@ struct Param *params_to_struct_array(int ac, char **av){
 
 /*splits each word of a string and stores 
   them in a array of strings*/
-
 char **string_split(char *string){
   int i,j,w_count,temp;
   char **split;
