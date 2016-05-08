@@ -5,6 +5,8 @@ int length(char *str);
 void copy_string(char *write, char *string);
 int add_node(List **list, char *str);
 
+/*creates a new list from the command 
+  line arguments*/
 List *params_to_list(int ac, char **av){
   int i;
   List *list;
@@ -16,6 +18,8 @@ List *params_to_list(int ac, char **av){
   return list;
 }
 
+/* allocates a new node at the beginning
+   and links it*/
 int add_node(List **list, char *str){
   List *node;
   node = malloc( sizeof(List) );

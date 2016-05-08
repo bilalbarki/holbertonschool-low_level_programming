@@ -4,6 +4,7 @@
 int len(char *str);
 void c_string(char *write, char *string);
 
+/*inserts a new node at a specific index*/
 int insert_in_list(List **list, char *content, int index){
   int i;
   List *node, *left, *right;
@@ -12,7 +13,7 @@ int insert_in_list(List **list, char *content, int index){
   for (i=0;i<index && right;i++){
     left=right;
     right=right->next;
-  } /*while(i<index && right->next);*/
+  }
   node=malloc( sizeof(List) );
   node->str=malloc( sizeof(char)*(len(content)+1) );
   c_string(node->str,content);

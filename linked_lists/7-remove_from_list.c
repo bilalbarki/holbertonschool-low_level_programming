@@ -3,6 +3,8 @@
 
 void free_node(List *del);
 
+/*removes and frees a node from a list at a 
+  specific index*/
 void remove_from_list(List **list, int index){
   int i;
   List *prev, *del;
@@ -23,6 +25,7 @@ void remove_from_list(List **list, int index){
   }
 }
 
+/*frees a node*/
 void free_node(List *del){
   free(del->str);
   free(del);

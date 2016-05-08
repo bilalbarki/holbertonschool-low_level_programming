@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include "list.h"
 
+/*reverses the order of the nodes 
+  in a List*/
 void rev_list(List **list){
   List *prev, *current, *next;
   prev=NULL;

@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include "list.h"
 int length(char *str);
-void copy_string(List *node, char *str);
+void copy_string(char *dest, char *source);
 
+/* allocates a new node at the end
+   and links it*/
 int add_node(List **list, char *str){
   List *node, *i;
   node = malloc( sizeof(List) );
@@ -13,7 +15,7 @@ int add_node(List **list, char *str){
     free(node);
     return 1;
   }
-  copy_string(node,str);
+  copy_string(node->str,str);
   node->next=NULL;
   if (*list==NULL){
     *list=node;
@@ -33,9 +35,9 @@ int length(char *str){
 }
 
 /*copies string*/
-void copy_string(List *node, char *string){
+void copy_string(char *dest, char *source){
   int i;
-  for (i=0;string[i];i++)
-    node->str[i]=string[i];
-  node->str[i]='\0';
+  for (i=0;source[i];i++)
+    dest[i]=source[i];
+  dest[i]='\0';
 }

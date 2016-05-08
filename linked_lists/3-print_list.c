@@ -4,6 +4,7 @@
 int print_char(char c);
 void print_string(char *str);
 
+/*prints each element of a List*/
 void print_list(List *list){
   for(;list;list=list->next){
     print_string(list->str);

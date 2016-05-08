@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "list.h"
 
+/*frees a list*/
 void free_list(List *list){
   List *temp;
   for (;list;list=temp->next){
