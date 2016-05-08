@@ -2,7 +2,7 @@
 #include "list.h"
 
 int length(char *str);
-void copy_string(char *write, char *string);
+void copy_string(char *dest, char *source);
 int add_node(List **list, char *str);
 
 /*creates a new list from the command 
@@ -44,9 +44,9 @@ int length(char *str){
 }
 
 /*copies string*/
-void copy_string(char *write, char *string){
+void copy_string(char *dest, char *source){
   int i;
-  for (i=0;string[i];i++)
-    write[i]=string[i];
-  write[i]='\0';
+  for (i=0;source[i];i++)
+    dest[i]=source[i];
+  dest[i]='\0';
 }
