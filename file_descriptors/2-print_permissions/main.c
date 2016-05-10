@@ -4,6 +4,7 @@
 int print_char(char c);
 void print_permissions(int st_mode);
 
+/*prints the permissions of a file*/
 int main(int argc, char *argv[]){
   struct stat permissions;
   if (argc!=2) return 1;
@@ -13,6 +14,7 @@ int main(int argc, char *argv[]){
   return 0;
 }
 
+/*converts and prints permissions*/
 void print_permissions(int st_mode){
   print_char( (S_ISDIR(st_mode)) ? 'd' : '-' );
   print_char( (st_mode & S_IRUSR) ? 'r' : '-' );
