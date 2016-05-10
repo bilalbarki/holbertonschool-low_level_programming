@@ -3,7 +3,6 @@
 
 int print_char(char c);
 void print_permissions(int st_mode);
-void print_string(char *str);
 
 int main(int argc, char *argv[]){
   struct stat permissions;
