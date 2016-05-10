@@ -4,6 +4,8 @@
 int print_char(char c);
 int copier(int *dest, int *source);
 
+/*copies the content of a file 
+  into another file*/
 int main(int argc, char *argv[]){
   int fr, fw;
   if (argc!=3) return 1;
@@ -25,6 +27,8 @@ int main(int argc, char *argv[]){
   return 0;
 }
 
+/*copies content from source file 
+  to dest file*/
 int copier(int *dest, int *source){
   int i;
   char buf;
