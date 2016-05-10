@@ -48,6 +48,7 @@ int reader(int *fp){
   return 0;
 }
 
+/*argv[0]: */
 void incaseoferror(char *str){
   for (;*str;str++) print_char(*str);
   print_char(':');
