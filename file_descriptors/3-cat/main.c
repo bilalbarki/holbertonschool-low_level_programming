@@ -17,8 +17,7 @@ int main(int argc, char *argv[]){
   }
   else{
     if ( stdin_writer() ){
-      incaseoferror(argv[0]);
-      perror("");
+      perror(argv[0]);
       return 1;
     }
   }
