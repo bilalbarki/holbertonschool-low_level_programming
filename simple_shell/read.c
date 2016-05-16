@@ -16,12 +16,7 @@ char *read_line(const int fd){
 void countletters(const int fb, int count, char **line){
   char buf;
   if (read(fb, &buf, 1) && buf!='\n'){
-    if (buf!='\b')
-      countletters(fb, count+1, line);
-    else{
-      write(1, &buf, 1);
-      return;
-    }
+    countletters(fb, count+1, line);
   }
   else{
     *line=malloc( sizeof(char)*(count+1) );

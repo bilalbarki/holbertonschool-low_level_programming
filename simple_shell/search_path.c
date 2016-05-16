@@ -48,6 +48,17 @@ char *get_env(char *name, char **envp){
   return NULL;
 }
 
+int get_env_index(char *name, char **envp){
+  int i, length;
+  length=string_length(name);
+  for (i=0;envp[i];i++){
+    if ( string_ncompare(envp[i],name,length) == 0 ){
+      return i;
+    }
+  }
+  return -1;
+}
+
 int string_ncompare(const char *s, const char *t, int n) {
 	for ( ; n--; s++, t++) {
     	if(*s != *t) {

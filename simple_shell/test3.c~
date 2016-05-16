@@ -1,14 +1,14 @@
 #include <stdlib.h>
-
-
+#include <stdio.h>
+/*prints the output two dimentional array*/
 void print_tab(char **split){
   int i;
   for (i=0;split[i];i++){
-    print_line(split[i]);
-    print_char('\n');
+    printf("%s\n",split[i]);
   }
 }
 
+/*frees space*/
 void free_tab(char **split){
   int i;
   for (i=0;split[i];i++){
@@ -17,4 +17,3 @@ void free_tab(char **split){
   free(split[i]);
   free(split);
 }
-
