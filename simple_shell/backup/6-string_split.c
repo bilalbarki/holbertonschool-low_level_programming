@@ -1,8 +1,13 @@
+#include <stdio.h>
 #include <stdlib.h>
+void free_tab(char **split);
+void print_tab(char **split);
+int print_char(char c);
 char *create_space_for_word(char *str, char *dest, char separator);
 char *copy_word(char *str, char *dest, char separator);
 char *jump_separator(char *str, char separator);
 char **word_count_reserve_space(char *str, char separator);
+void print_line(char *line);
 
 /*splits a string into words with space as separator*/
 char **string_split(const char *str, char separator){
@@ -12,16 +17,12 @@ char **string_split(const char *str, char separator){
   /*while str is not equal to \0*/
   while(*copy){
     if (*copy==separator){
-      copy=jump_separator(copy, separator); 
-      /*jumps over all consecutive spaces and returns pointer to non-space character*/
+      copy=jump_separator(copy, separator); /*jumps over all consecutive spaces and returns pointer to non-space character*/
     }
     else{
-      split[i]=create_space_for_word(copy,split[i], separator); 
-      /*returns address of newly allocated space for word*/
-      copy=copy_word(copy,split[i], separator); 
-      /*copies word into the newly allocated space and returns a pointer to the location where word ends*/
-      i++; 
-      /*so that next split[i] is accessible*/
+      split[i]=create_space_for_word(copy,split[i], separator); /*returns address of newly allocated space for word*/
+      copy=copy_word(copy,split[i], separator); /*copies word into the newly allocated space and returns a pointer to the location where word ends*/
+      i++; /*so that next split[i] is accessible*/
     }
   }
   return split;
@@ -30,8 +31,7 @@ char **string_split(const char *str, char separator){
 /*counts the number of letters in a word and allocates space for it*/
 char *create_space_for_word(char *str, char *dest, char separator){
   int count;
-  for(count=0;*str!=separator && *str;str++){ 
-    /*count number of letters in the word*/
+  for(count=0;*str!=separator && *str;str++){ /*count number of letters in the word*/
     count++;
   }
   dest=malloc( sizeof(char)*(count+1) );
@@ -40,8 +40,7 @@ char *create_space_for_word(char *str, char *dest, char separator){
 
 /*copies word to *dest and null terminates it*/
 char *copy_word(char *str, char *dest, char separator){
-  for(;*str!=separator && *str;str++){ 
-    /*not equal to space or \0*/
+  for(;*str!=separator && *str;str++){ /*not equal to space or \0*/
     *dest=*str;
     dest++;
   }
@@ -67,9 +66,9 @@ char **word_count_reserve_space(char *str, char separator){
       if (*str!='\0') count++; /*at every block of space encounted count++*/
       /*
        *if a string is "     how    are     you" then there are 3 blocks of spaces
+       
        *if a string is "how    are     you" then there are 2 blocks of spaces but note on line 3 of this 
-       *function we have already accounted that if initially first character is non-space or 
-       *non-terminating add 1 to counter
+       *function we have already accounted that if initially first character is non-space or non-terminating add 1 to counter
        *so again the count is 3
        */
     }
@@ -78,3 +77,31 @@ char **word_count_reserve_space(char *str, char separator){
   dest[count]=NULL; /*set the last one to NULL*/
   return dest;
 }
+
+/*prints the output two dimentional array*/
+void print_tab(char **split){
+  int i;
+  for (i=0;split[i];i++){
+    print_line(split[i]);
+    print_char('\n');
+  }
+}
+
+/*frees space*/
+void free_tab(char **split){
+  int i;
+  for (i=0;split[i];i++){
+    free(split[i]);
+  }
+  free(split[i]);
+  free(split);
+}
+/*
+int main(){
+  char **tab;
+  tab = string_split("   one two +  three    four   ", '+');
+  print_tab(tab);
+  free_tab(tab);
+  return (0);
+}
+*/

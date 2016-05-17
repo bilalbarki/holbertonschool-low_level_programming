@@ -32,4 +32,3 @@ char **v_names(char *args);
 char *replace_variable_names(char *args, char **names, char **envp);
 void check_convert_dollar_question(char **args, int status);
 void convert_error_int_to_string(int number, char *a);
-void initial_processing(char **args, char **envp);
