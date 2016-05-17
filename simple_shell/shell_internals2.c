@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "functions.h"
-
+/*handles comments*/
 void handle_comments(char **args){
   int i,j;
   for (i=0;args[i];i++){
@@ -16,7 +16,7 @@ void handle_comments(char **args){
     }
   }
 }
-
+/*checks for builtin commands and then carries on to calling another function*/
 int shell_execute(char **args, char ***envp, char **d_or, char **d_ampersand, char **semicolon, int status){
   char *builtin_str[] = {
     "cd",

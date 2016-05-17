@@ -3,7 +3,7 @@
 #include <dirent.h>
 #include <dirent.h>
 #include "functions.h"
-
+/*search directories of PATH variable*/
 char *search_dir(char **args, char **envp){
   int i;
   char **paths, *dirpath;
@@ -31,6 +31,7 @@ char *search_dir(char **args, char **envp){
   return NULL;
 }
 
+/*makes a directory PATH*/
 char *dir_path(char *s1, char *s2){
   int i, count;
   char *joined_string;

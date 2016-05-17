@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 #include "functions.h"
-
+/*after user sends command, initial processsing is done*/
 void initial_processing(char **args, char **envp){
   int z;
   handle_comments(args);
@@ -18,6 +18,7 @@ void initial_processing(char **args, char **envp){
   }
 }
 
+/*for $?*/
 void check_convert_dollar_question(char **args, int status){
   int i,k, length;
   char a[4];
@@ -35,6 +36,7 @@ void check_convert_dollar_question(char **args, int status){
   }
 }
 
+/*converts error to string for exit*/
 void convert_error_int_to_string(int number, char *a){
   if (number<10){
     a[1]='\0';
@@ -53,6 +55,7 @@ void convert_error_int_to_string(int number, char *a){
   }
 }
 
+/*returns variable names in the command*/
 char **v_names(char *args){
   char **variables;
   int i, count, j, k;
@@ -87,6 +90,7 @@ char **v_names(char *args){
   return variables;
 }
 
+/*replaces variable names in the command*/
 char *replace_variable_names(char *args, char **names, char **envp){
   int i, length, count,p;
   char *evmnt, *new;

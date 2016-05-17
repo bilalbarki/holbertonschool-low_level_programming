@@ -9,6 +9,7 @@
 
 #include "functions.h"
 
+/*copy env variables*/
 char **copy_envp(char *envp[]){
   char **copy_e;
   int i, length;
@@ -23,6 +24,7 @@ char **copy_envp(char *envp[]){
   return copy_e;
 }
 
+/*add to env variables*/
 char **add_envp(char *envp[], char *add_new){
   char **copy_e;
   int i, length;
@@ -41,6 +43,7 @@ char **add_envp(char *envp[], char *add_new){
   return copy_e;
 }
 
+/*remove from env variables*/
 char **remove_envp(char *envp[], char *remove_ptr){
   char **copy_e;
   int i, j, length;
@@ -59,6 +62,7 @@ char **remove_envp(char *envp[], char *remove_ptr){
   return copy_e;
 }
 
+/*get environment variable*/
 char *get_env(char *name, char **envp){
   int i, length;
   length=string_length(name);
@@ -70,6 +74,7 @@ char *get_env(char *name, char **envp){
   return NULL;
 }
 
+/*get env variable index*/
 int get_env_index(char *name, char **envp){
   int i, length;
   length=string_length(name);

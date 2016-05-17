@@ -43,6 +43,7 @@ int main (__attribute__((unused)) int argc, __attribute__((unused)) char *argv[]
   return 1;
 }
 
+/*calls execve by forking*/
 int call_execve(char *name, char **args, char **envp, char **d_or, char **d_ampersand, char **semicolon, int i){
   pid_t pid;
   int status;
@@ -71,6 +72,7 @@ int call_execve(char *name, char **args, char **envp, char **d_or, char **d_ampe
   return status;
 }
 
+/*calls execve function and checks whether run from current dir or path*/
 int shell_fork_and_run(char **args, char **envp, char **d_or, char **d_ampersand, char **semicolon){
   /*pid_t pid, wpid;*/
   int status, fd;
