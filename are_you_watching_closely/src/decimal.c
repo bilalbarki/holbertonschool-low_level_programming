@@ -1,15 +1,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
-char *convert(unsigned long num, int base, int capital);
-int print_string(char *str);
-int print_char(char c);
-
-void d_noflag(unsigned long num, int *count);
-void d_l(long int num, int *count);
-void d_ll(long int num, int *count);
-void d_hh(signed char num, int *count);
-void d_h(short int num, int *count);
-
+#include "my_functions.h"
+/*decimal print*/
 void d_print(va_list *list, int *count, short l, short ll, short h, short hh) {
   if (ll==0 && l==0 && hh==0 && h==0){
     int num = va_arg(*list,int);

@@ -1,3 +1,5 @@
+#include "my_functions.h"
+
 char *checkflags(short *l, short *ll, short *h, short *hh, char *traverse){
   if (*traverse == 'l'){
     if (*(traverse+1) == 'l') {

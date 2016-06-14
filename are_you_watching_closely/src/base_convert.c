@@ -1,5 +1,6 @@
 #include <stdlib.h>
-
+#include "my_functions.h"
+/*converts base*/
 char *convert(unsigned long num, int base, int capital) 
 { 
   char Representation[17]= "0123456789ABCDEF";

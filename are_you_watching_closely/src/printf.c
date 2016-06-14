@@ -4,7 +4,7 @@
 #include "my_functions.h"
 #include <wchar.h>
 int print_string_wchar_t(wchar_t *str);
-
+/*main printf function*/
 int printf(char *format, ...) {
   char *traverse; 
   int count = 0;
@@ -28,7 +28,7 @@ int printf(char *format, ...) {
   va_end(arg);
   return count;
 }
-
+/*percent modifier*/
 char *print_variables(va_list *list, char *traverse, int *count) {
   char *ptr;
   short ll=0;
@@ -125,6 +125,7 @@ char *print_variables(va_list *list, char *traverse, int *count) {
   return traverse;
 } 
 
+/*prints normal chars*/
 char *print_until_special(char *traverse, int *count) {
   while( *traverse != '%' && *traverse )
   {

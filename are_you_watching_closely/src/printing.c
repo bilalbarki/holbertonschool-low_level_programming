@@ -1,13 +1,15 @@
 #include <unistd.h>
 #include <wchar.h>
 #include <stdlib.h>
-char *convert(unsigned long num, int base, int capital);
+#include "my_functions.h"
 
+/*prints to stdout one char at a time*/
 int print_char(char c)
 {
   return (write(1, &c, 1));
 }
 
+/*prints string*/
 int print_string(char *str) {
   int count = 0;
   for (;str[count];count++) {

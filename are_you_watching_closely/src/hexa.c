@@ -1,11 +1,8 @@
 #include <stdarg.h>
 #include <stdlib.h>
-char *convert(unsigned long num, int base, int capital);
-int print_string(char *str);
-int print_char(char c);
-void hexa_noflag(unsigned long num, int *count, short capital);
+#include "my_functions.h"
 
-
+/*hexa print*/
 void hexa_print(va_list *list, int *count, short h, short l, short capital) {
   if (l==0 && h==0){
     unsigned int num= va_arg(*list,unsigned int);

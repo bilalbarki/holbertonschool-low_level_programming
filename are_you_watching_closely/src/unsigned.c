@@ -1,13 +1,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
-char *convert(unsigned long num, int base, int capital);
-int print_string(char *str);
-int print_char(char c);
-void u_noflag(unsigned long num, int *count);
-void u_h(unsigned short int num, int *count);
-void u_l(unsigned long int num, int *count);
-
-
+#include "my_functions.h"
+/*prints unsigned*/
 void u_print(va_list *list, int *count, short h, short l){
   if (l==0 && h==0){
     unsigned int num= va_arg(*list,unsigned int);
