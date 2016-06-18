@@ -4,7 +4,7 @@ int print_char(char c);
 /*prints an X, if odd then at the center the character X is printed */
 int main(int argc, char *argv[]) {  
   int i, count = 0, max, odd;
-  if (argc != 2) return 1;
+  if (argc == 1) return 1;
   max = string_to_int(argv[1]);
   odd = max % 2;
   for (i=0; i<max; i++){
