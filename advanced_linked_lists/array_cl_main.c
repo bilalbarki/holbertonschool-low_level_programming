@@ -3,6 +3,7 @@
 
 List *array_to_cl_list(char **);
 void print_cl_list(List *);
+void free_cl_list(List *list);
 
 int main(__attribute__((unused))int ac, char **av)
 {
@@ -12,5 +13,6 @@ int main(__attribute__((unused))int ac, char **av)
   if (list == NULL)
     return (1);
   print_cl_list(list);
+  free_cl_list(list);
   return (0);
 }

@@ -8,7 +8,9 @@ List *array_to_dl_list(char **array) {
   int i;
   list = NULL;
   for (i=0 ; array[i] ; i++) {
-    add_end_dl_list(&list, array[i]);
+    if ( (add_end_dl_list(&list, array[i] )) == 1 ) {
+      return NULL;
+    }
   }
   return list;
 }
