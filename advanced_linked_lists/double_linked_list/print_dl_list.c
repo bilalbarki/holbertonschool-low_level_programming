@@ -2,7 +2,7 @@
 void print_string(char *str);
 int print_char(char c);
 
-/*print function for List*/
+/*print function for double linked List*/
 void print_dl_list(List *list) {
   for(;list;list=list->next) {
     print_string(list->str);

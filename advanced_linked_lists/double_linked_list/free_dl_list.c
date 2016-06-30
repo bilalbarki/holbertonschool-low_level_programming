@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "list.h"
 
-/*frees a list*/
+/*frees a double linked List*/
 void free_dl_list(List *list) {
   List *temp;
   for ( ; list ; list = temp ) {

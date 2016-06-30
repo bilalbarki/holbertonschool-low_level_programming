@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "list.h"
 
-/*creates new node at the end of the double linked List*/
-int add_end_dl_list(List **list, char *str) {
+/*creates new node at the end of the double circular List*/
+int add_end_dcl_list(List **list, char *str) {
   List *node;
   node = malloc( sizeof (List) );
   if (node == NULL)
@@ -13,22 +13,23 @@ int add_end_dl_list(List **list, char *str) {
     free(node);
     return 1;
   }
-  node->next = NULL;
   if (*list == NULL) {
     *list = node;
-    node->prev = NULL;
+    node->prev = node;
+    node->next = node;
   }
   else {
-    List *traverse = *list;
-    for (; traverse->next ; traverse = traverse->next);
-    traverse->next = node;
-    node->prev = traverse;
+    List *last = (*list)->prev;
+    (*list)->prev = node;
+    last->next = node;
+    node->prev = last;
+    node->next = *list;
   }
   return 0;
 }
 
-/*creates new node at the beginning of the double linked List*/
-int add_begin_dl_list(List **list, char *str) {
+/*creates new node at the beginning of the double circular list*/
+int add_begin_dcl_list(List **list, char *str) {
   List *node;
   node = malloc( sizeof (List) );
   if (node == NULL)
@@ -38,11 +39,16 @@ int add_begin_dl_list(List **list, char *str) {
     free(node);
     return 1;
   }
-  node->next = *list;
   if ( *list != NULL ) {
+    node->prev = (*list)->prev;
+    (*list)->prev->next = node;
     (*list)->prev = node;
+    node->next = *list;
   }
-  node->prev = NULL;
+  else {
+    node->prev = node;
+    node->next = node;
+  }
   *list = node;
   return 0;
 }
