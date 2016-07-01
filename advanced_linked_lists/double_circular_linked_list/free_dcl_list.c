@@ -11,6 +11,6 @@ void free_dcl_list(List *list) {
       free(list->str);
       free(list);
       list = temp;
-    } while(head != list);
+    } while( list != head );
   }
 }
