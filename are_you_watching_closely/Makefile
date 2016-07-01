@@ -1,21 +1,17 @@
-CFLAGS := -Wall -pedantic -Werror -Wextra
-HEADER := my_functions.h
-SRCDIR := src
-CFILES :=  base_convert.c flags.c printf.c src decimal.c hexa.c octal.c printing.c unsigned.c
-SOURCES := $(foreach file, $(CFILES), $(SRCDIR)/$(file))
+CFLAGS := -Wall -pedantic -Werror -Wextra -Wno-format
+SOURCES := base_convert.c flags.c printf.c decimal.c hexa.c octal.c printing.c unsigned.c 
 OBJECTS := $(patsubst %.c, %.o, $(SOURCES))
+OUTPUT := libprintf.a
 
-all: libholberton.a
+all: $(OUTPUT)
 
-libholberton.a: $(OBJECTS)
-	ar -rc libprintf.a $(OBJECTS)
+libprintf.a: $(OBJECTS)
+	ar rcs $(OUTPUT) $(OBJECTS)
 
-$(OBJECTS):$(SOURCES)
-	gcc $(CFLAGS) -Iinc -c $< -o $@
+.o:.c
+	gcc $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -f $(OBJECTS) libprintf.a
+clean: 
+	rm -f $(OBJECTS) $(OUTPUT)
 
-re:
-	rm -f $(OBJECTS)
-	make $(OBJECTS)
+re: clean all

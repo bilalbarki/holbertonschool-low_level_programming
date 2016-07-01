@@ -8,7 +8,7 @@ int main(void)
   unsigned int ui;
   void *addr;
 
-  len = printf("INTEGER{%d}, STRING{%s}\n", 98, "I am a string");
+  len = printf("INTEGER{%d}, STRING{%s}\n", -98, "I am a string");
   ui = (unsigned int)INT_MAX + 1;
   addr = &len;
   printf("previous length{%d}\n", len);

@@ -5,13 +5,13 @@
 #include <wchar.h>
 int print_string_wchar_t(wchar_t *str);
 /*main printf function*/
-int printf(char *format, ...) {
+int printf(const char *format, ...) {
   char *traverse; 
   int count = 0;
    
   va_list arg; 
   va_start(arg, format); 
-  traverse = format;
+  traverse = (char *)format;
   
   if ( *traverse ) {
     while(1) { 

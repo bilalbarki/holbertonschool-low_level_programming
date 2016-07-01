@@ -1,5 +1,6 @@
 #include <wchar.h>
 #include <stdarg.h>
+int printf(const char *format, ...);
 char *convert(unsigned long num, int base, int capital);
 void d_noflag(unsigned long num, int *count);
 void d_l(long int num, int *count);
