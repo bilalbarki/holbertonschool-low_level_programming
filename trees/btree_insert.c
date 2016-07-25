@@ -19,6 +19,7 @@ int btree_insert(BTree **tree, char *data)
                 (*tree)->str = strdup(data);
                 if (((*tree)->str) == NULL)
                         return (1);
+                /* initialize the children to null */
                 (*tree)->left = NULL;
                 (*tree)->right = NULL;
                 return (0);

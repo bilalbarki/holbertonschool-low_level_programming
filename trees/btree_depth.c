@@ -2,21 +2,23 @@
 #include "tree.h"
 
 /**
- * btree_depth - calculates the depth of a binary tree
- * @tree: points to binary tree
+ * btree_depth - calculated the depth of a binary tree
+ * @tree: points to tree structure
  */
-int btree_depth(BTree *tree) 
+int btree_depth(BTree *tree)
 {
-	if (tree==NULL) 
-		return -1;
-	else
-	{
-		int left_depth;
-		int right_depth;
-		left_depth = btree_depth(tree->left);
-		right_depth = btree_depth(tree->right);
-		if (left_depth > right_depth) 
-			return(left_depth+1);
-		else return(right_depth+1);
-	}
+        if (tree == NULL)
+                return (-1);
+        else
+        {
+                /* compute the depth of each subtree */
+                int left_depth = btree_depth(tree->left);
+                int right_depth = btree_depth(tree->right);
+
+                /* use the larger one */
+                if (left_depth > right_depth)
+                        return (left_depth+1);
+                else
+                        return (right_depth+1);
+        }
 }

@@ -9,10 +9,12 @@ int btree_insert(BTree **tree, char *data);
  */
 BTree *array_to_btree(char **array)
 {
-	int i;
-	BTree *tree = NULL;
-	for (i = 0; array[i]; i++)
-		if( btree_insert(&tree, array[i]) )
-			return NULL;
-	return tree;
+        int i;
+        BTree *tree = NULL;
+
+        for (i = 0; array[i]; i++)
+                if (btree_insert(&tree, array[i]))
+                        return (NULL);
+        return (tree);
 }
+
