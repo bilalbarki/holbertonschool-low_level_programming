@@ -11,7 +11,6 @@ BTree *array_to_btree(char **array)
 {
 	int i;
 	BTree *tree = NULL;
-	/*loop through the array*/
 	for (i = 0; array[i]; i++)
 		if( btree_insert(&tree, array[i]) )
 			return NULL;
