@@ -10,19 +10,19 @@
 int push_queue(Queue **list, char *str)
 {
 	Queue *node, *i;
-	node = malloc( sizeof(Queue) );
+	node = malloc(sizeof(Queue));
 	if (node == NULL)
 	{
-		return 1;
+		return (1);
 	}
 	node->str = strdup(str);
 	if (node->str == NULL)
 	{
 		free(node);
-		return 1;
+		return (1);
 	}
 	node->next=NULL;
-	if ( (*list) == NULL)
+	if ((*list) == NULL)
 	{
 		(*list) = node;
 	}
@@ -31,5 +31,5 @@ int push_queue(Queue **list, char *str)
 		for(i=*list ; i->next ; i=i->next);
 		i->next=node;
 	}
-	return 0;
+	return (0);
 }
