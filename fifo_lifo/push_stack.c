@@ -2,6 +2,11 @@
 #include <string.h>
 #include "stack.h"
 
+/**
+ * push_stack - pushes string to a stack
+ * @list: points to a stack
+ * @str: string to be saved in the stack
+ */
 int push_stack(Stack **list, char *str)
 {
 	Stack *node;

@@ -4,7 +4,7 @@
 
 /**
  * push_queue - pushes a string to a queue
- * @list: points to a stack
+ * @list: points to a queue
  * @str: string to be saved in the queue
  */
 int push_queue(Queue **list, char *str)
