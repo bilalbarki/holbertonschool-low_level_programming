@@ -107,7 +107,8 @@ void filter_back(char *str) {
  * @s2: Second input string
  * Description: Puts all files/folders to an ntree
  */
-char *string_concat(char *s1, char joiner, char *s2){
+char *string_concat(char *s1, char joiner, char *s2)
+{
 	int i,j,p;
 	char *concat;
 	for ( i=0; s1[i]!='\0'; i++ );
@@ -115,7 +116,9 @@ char *string_concat(char *s1, char joiner, char *s2){
 	j=j+i;
 	concat=malloc( sizeof(char) * (j+2) );
 	if (concat == NULL)
+	{
 		return NULL;
+	}
 	for ( p=0; s1[p]; p++ ) concat[p]=s1[p];
 	concat[p]=joiner;
 	p++;
