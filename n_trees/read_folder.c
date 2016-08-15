@@ -3,13 +3,13 @@
 #include <string.h>
 #include <dirent.h>
 #include "tree.h"
-void filter_it(char *str);
-void filter_back(char *str);
+void filter_it(char *);
+void filter_back(char *);
 int ntree_insert(NTree **, char **, char *);
 char **string_split(const char *, char);
 void free_str_array(char **);
 void list_dir (char *, int, NTree **);
-char *string_concat(char *s1, char joiner, char *s2);
+char *string_concat(char *, char, char *);
 
 /**
  * read_folder - Reads a folder and subfolders
