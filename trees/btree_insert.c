@@ -24,11 +24,11 @@ int btree_insert(BTree **tree, char *data)
 		(*tree)->right = NULL;
 		return (0);
 	}
-	else if (strcmp(data, (*tree)->str) > 0)
+	else if (strcmp(data, (*tree)->str) < 0)
 	{
 		btree_insert(&(*tree)->left, data);
 	}
-	else if (strcmp(data, (*tree)->str) <= 0)
+	else if (strcmp(data, (*tree)->str) >= 0)
 	{
 		btree_insert(&(*tree)->right, data);
 	}
