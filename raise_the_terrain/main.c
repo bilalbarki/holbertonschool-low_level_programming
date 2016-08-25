@@ -14,7 +14,6 @@ int y_cart_to_iso(int cartX, int cartY, int z, float incline);
 int rotate_xy(int deg, int *isoX, int *isoY, int centerX, int centerY);
 int xy_cart_to_iso(int cartX, int cartY);
 
-
 int main( __attribute__ ((unused)) int argc, __attribute__ ((unused)) char* args[] )
 {
 
@@ -56,7 +55,6 @@ void quit_game(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font *font, SDL_
 
 int gameloop(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font *font, SDL_Texture *texture)
 {
-
 	window = SDL_CreateWindow( "Bilal", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
 	if( window == NULL )
 	{
@@ -78,6 +76,7 @@ int gameloop(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font *font, SDL_Te
 			printf( "Error loading font: %s\n", TTF_GetError());
 			return 1;
 		}
+
 		quit = 1;
 
 		x_offset = 0;
@@ -98,7 +97,25 @@ int gameloop(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font *font, SDL_Te
 			return 1;
 		}
 
+        if (tile_dimension*tiles >= SCREEN_HEIGHT)
+        {
+            int temp = tile_dimension;
+            printf("4444 %d\n", tile_dimension*tiles);
+            tile_dimension = SCREEN_HEIGHT/tiles;
 
+            if (tile_dimension >=16 && tile_dimension <= 40) tile_dimension-=2;
+           y_offset-=tile_dimension/tiles*(temp-tile_dimension);
+
+        }
+
+
+        else if (tile_dimension*tiles >= SCREEN_WIDTH)
+        {
+            int temp = tile_dimension;
+            tile_dimension = SCREEN_WIDTH/tiles;
+           y_offset-=tile_dimension/tiles*(temp-tile_dimension);
+
+        }
 		while (quit) {
 
 			while( SDL_PollEvent( &e ) != 0 )
@@ -158,10 +175,12 @@ int gameloop(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font *font, SDL_Te
 
 					case SDLK_z:
 					  tile_dimension++;
+					  y_offset+=tile_dimension/tiles;
 					  break;
 
 					case SDLK_x:
 					  tile_dimension--;
+					  y_offset-=tile_dimension/tiles;
 					  break;
 
 					case SDLK_r:
@@ -183,6 +202,18 @@ int gameloop(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font *font, SDL_Te
 					case SDLK_RETURN:
 					  selected = 0;
 					  normalize = 1;
+					  break;
+
+                    case SDLK_b:
+					  tiles++;
+
+					  break;
+
+                    case SDLK_n:
+					  tiles--;
+					  break;
+
+
 
 					}
 				}
@@ -247,8 +278,8 @@ int gameloop(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font *font, SDL_Te
 			SDL_SetRenderDrawColor( gRenderer, 0x98, 0xF6, 0xFF, 0x22);
 
 			hyp = ( (tile_dimension)*(tiles) )/2;
-			x_center = (SCREEN_WIDTH / 2)-(incline)*tile_dimension;
-			y_center = ((SCREEN_HEIGHT / 2) - hyp)+(incline)* tile_dimension;
+			x_center = (SCREEN_WIDTH / 2);
+			y_center = (SCREEN_HEIGHT / 2) - (hyp)/2 - sqrt(tile_dimension*4)*4;
 
 
 			for (j = 0, m=0; j <= tiles*tile_dimension; j += tile_dimension, m++ )
@@ -426,7 +457,7 @@ void line_color_altitude(int z1, int z2, SDL_Renderer* gRenderer)
 		SDL_SetRenderDrawColor( gRenderer, 0x8D, 0x97, 0xd4, 0x22);
 	}
 
-	if (z1 < 0 && z2 >= -20)
+	else if (z1 < 0 && z2 >= -20)
 	{
 		SDL_SetRenderDrawColor( gRenderer, 0x11, 0x5D, 0x1F, 0x22);
 	}
