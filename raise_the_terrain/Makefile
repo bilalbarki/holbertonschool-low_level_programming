@@ -8,7 +8,7 @@ CC = gcc
 COMPILER_FLAGS = -Wall -Werror -Wextra -pedantic
 
 #LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = -lSDL2 -lm -lSDL2_ttf
+LINKER_FLAGS = `sdl2-config --cflags --libs` -lSDL2_ttf -lm
 
 #OBJ_NAME specifies the name of our exectuable
 OBJ_NAME = a.out
