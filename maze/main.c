@@ -24,9 +24,6 @@ float piRadRatio;
 int rayX[320];
 int rayY[320];
 
-int texX[51200];
-int texY[51200];
-
 #define move_step 3
 int mapWidth =24;
 int mapHeight =24;
