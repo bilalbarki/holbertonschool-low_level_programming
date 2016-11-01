@@ -83,7 +83,7 @@ void draw_floor(SDL_Renderer* gRenderer, int projected_height_half, float angle,
  */
 void draw_wall( SDL_Renderer* gRenderer, int index, float angle, float rel_angle, int *projected_height, SDL_Rect wallSrcRect, SDL_Rect wallDestRect, SDL_Texture *wallTexture)
 {
-    wallHit.distance = horizontal_distance(angle, rel_angle, index);
+    wallHit.distance = ray_distance(angle, rel_angle, index);
     wallSrcRect.x = wallHit.texture_offset;
 
     *projected_height = ceil( (BLOCK_SIZE)/(wallHit.distance) * player.distanceFromProjectionPlane);

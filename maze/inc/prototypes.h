@@ -1,6 +1,5 @@
 #include <SDL2/SDL.h>
-float horizontal_distance(float angle, float rel_angle, int);
-float vertical_distance(float angle, float rel_angle, int);
+float ray_distance(float angle, float rel_angle, int index);
 float convertAngleZeroToThreeSixty(float raw_angle);
 int detectCollision(int direction);
 int initialize_world_map(char *path);
@@ -12,7 +11,7 @@ int gameloop( SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallText
 void move_player_front_backwards(int inc, int direction);
 void move_player_sideways(int inc, int direction);
 void increment_viewing_angle(int inc);
-int load_all_textures(SDL_Renderer* gRenderer, SDL_Texture **wallTexture, SDL_Texture **floorTexture,  __attribute__ ((unused)) SDL_Texture **ceilingTexture, SDL_Texture **wTexture);
+int load_all_textures(SDL_Renderer* gRenderer, SDL_Texture **wallTexture, SDL_Texture **floorTexture, SDL_Texture **ceilingTexture, SDL_Texture **wTexture);
 void draw_rain(SDL_Renderer* gRenderer, int index);
 void draw_first_person(SDL_Renderer* gRenderer, SDL_Texture *wTexture);
 void draw_floor(SDL_Renderer* gRenderer, int projected_height_half, float angle, float rel_angle, SDL_Texture *floorTexture, SDL_Rect fcSrcRect, SDL_Rect fcDestRect);

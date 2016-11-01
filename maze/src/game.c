@@ -14,12 +14,12 @@
 void quit_game(SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallTexture,SDL_Texture *ceilingTexture, SDL_Texture *wTexture)
 {
     int i;
-    for (i=0 ; worldMap[i] ; i++)
+    for (i=0 ; worldMap.map[i] ; i++)
     {
-        free(worldMap[i]);
+        free(worldMap.map[i]);
     }
-    free(worldMap[i]);
-    free(worldMap);
+    free(worldMap.map[i]);
+    free(worldMap.map);
     
     free(wallHit.x);
     free(wallHit.y);
@@ -45,7 +45,7 @@ void setValuesForPlayer() {
     player.viewing_angle =90;
     player.distanceFromProjectionPlane = (SCREEN_WIDTH>>1)/tan(M_PI/180*(player.FOV>>1));
     player.AngleBetweenSubsequentRays = (float)player.FOV / SCREEN_WIDTH;
-    piRadRatio = M_PI/180;
+    //piRadRatio = M_PI/180;
 }
 
 /**

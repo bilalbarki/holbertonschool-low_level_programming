@@ -65,13 +65,12 @@ int column_count( char *path )
  * @*ncolumn: number of columns for the map
  * RETURNS: returns 0 if all goes well, 1 if there is an error in opening the file
  */
-int load_map_from_file(char *path, size_t ncolumn) {
+int load_map_from_file(char *path, size_t ncolumn) 
+{
     int  i=0, j=0;
-    //size_t count;
     size_t width;
     char *line;
     
-    //ncolumn = column_count(path);
     line = malloc(ncolumn);
    
     FILE *file;  /* declare a FILE pointer  */
@@ -81,17 +80,18 @@ int load_map_from_file(char *path, size_t ncolumn) {
         return 1;
     }
 
-    while( (int) (width = getline(&line, &ncolumn, file))!=-1) {
+    while( (int) (width = getline(&line, &ncolumn, file))!=-1) 
+    {
 
         j=0;
-        for (; width > 1; width--, j++){
-            worldMap[i][j] = (int)line[j] -48;
-
+        for (; width > 1; width--, j++)
+        {
+            worldMap.map[i][j] = (int)line[j] - 48;
         }
-        mapWidth=j;
         i++;
     }
-    mapHeight = i;
+    worldMap.width=j;
+    worldMap.height = i;
     free(line);
     fclose(file);
     return 0;
@@ -107,11 +107,11 @@ int initialize_world_map(char *path)
     int nrows, ncolumns, i;
     nrows = row_count(path);
     ncolumns = column_count(path);
-    worldMap = malloc( (nrows+1) * sizeof(int *));
+    worldMap.map = malloc( (nrows+1) * sizeof(int *));
     for (i=0; i<nrows; i++) {
-        worldMap[i] = malloc(ncolumns * sizeof(int));
+        worldMap.map[i] = malloc(ncolumns * sizeof(int));
     }
-    worldMap[nrows] = NULL;
+    worldMap.map[nrows] = NULL;
     load_map_from_file(path, ncolumns);
     return 0;
 }

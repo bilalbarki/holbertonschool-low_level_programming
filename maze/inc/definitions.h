@@ -4,3 +4,4 @@
 #define FALSE 0
 #define BLOCK_SIZE 64
 #define VIEW_DISTANCE 400
+#define piRadRatio 0.0174533

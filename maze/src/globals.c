@@ -1,13 +1,11 @@
-#include "../inc/extern.h"
-#include "../inc/definitions.h"
+#include "../inc/camera.h"
+#include "../inc/wallhits.h"
+#include "../inc/world_map.h"
 
 /*Screen dimension constants*/
 const int SCREEN_WIDTH = 320;
 const int SCREEN_HEIGHT = 320;
 
 struct camera player;
-float piRadRatio;
 struct wallHits wallHit;
-int mapWidth;
-int mapHeight;
-int **worldMap;
+struct world_map worldMap;
