@@ -1,7 +1,7 @@
-#ifndef PLAYER_H_INCLUDED
-#define PLAYER_H_INCLUDED
+#ifndef CAMERA_H_INCLUDED
+#define CAMERA_H_INCLUDED
 
-typedef struct plyr {
+struct camera {
    float x;
    float y;
    int viewing_angle;
@@ -9,7 +9,7 @@ typedef struct plyr {
    int FOV;
    int distanceFromProjectionPlane;
    float AngleBetweenSubsequentRays;
-} maze_player;
+};
 
-#endif // PLAYER_H_INCLUDED
+#endif // CAMERA_H_INCLUDED
 

@@ -1,7 +1,13 @@
 #include <SDL2/SDL.h>
 #include "../inc/description.h"
+#include "../inc/definitions.h"
+#include "../inc/prototypes.h"
 
-void showMap(SDL_Renderer* gRenderer)
+/**
+ * Draws a mini-map
+ * @gRenderer: the main renderer for drawing
+ */
+void draw_map(SDL_Renderer* gRenderer)
 {
     int i, j, p;
     struct screen_coords {
@@ -35,8 +41,8 @@ void showMap(SDL_Renderer* gRenderer)
         }
         SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
         SDL_Rect position;
-        position.x = player.x*2/block_size;
-        position.y = player.y*2/block_size;
+        position.x = player.x*2/BLOCK_SIZE;
+        position.y = player.y*2/BLOCK_SIZE;
         position.w = 2;
         position.h = 2;
         SDL_RenderFillRect(gRenderer, &position);
@@ -44,6 +50,6 @@ void showMap(SDL_Renderer* gRenderer)
         SDL_SetRenderDrawColor(gRenderer, 155, 155, 255, 100);
         for (i=0; i<SCREEN_WIDTH; i++)
         {
-            SDL_RenderDrawLine( gRenderer, player.x*2/block_size, player.y*2/block_size, wallHit.x[i]*2.0/block_size, wallHit.y[i]*2.0/block_size );
+            SDL_RenderDrawLine( gRenderer, player.x*2/BLOCK_SIZE, player.y*2/BLOCK_SIZE, wallHit.x[i]*2.0/BLOCK_SIZE, wallHit.y[i]*2.0/BLOCK_SIZE );
         }
 }

@@ -1,10 +1,11 @@
 #include "../inc/description.h"
+#include "../inc/definitions.h"
 
-
-//Screen dimension constants
+/*Screen dimension constants*/
 const int SCREEN_WIDTH = 320;
 const int SCREEN_HEIGHT = 320;
-maze_player player;
+
+struct camera player;
 float piRadRatio;
 struct wallHits wallHit;
 int mapWidth;

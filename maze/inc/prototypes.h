@@ -1,0 +1,21 @@
+#include <SDL2/SDL.h>
+float horizontal_distance(float angle, float rel_angle, int);
+float vertical_distance(float angle, float rel_angle, int);
+float convertAngleZeroToThreeSixty(float raw_angle);
+int detectCollision(int direction);
+int readfromfile(char *path);
+SDL_Texture *loadTexture(char *path, SDL_Renderer *renderTarget);
+void setValuesForPlayer();
+float convertAngleZeroToThreeSixty(float raw_angle);
+void quit_game(SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallTexture, SDL_Texture *ceilingTexture, SDL_Texture *wTexture);
+int gameloop( SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallTexture, SDL_Texture *floorTexture, SDL_Texture *ceilingTexture, SDL_Texture *wTexture );
+void move_player_front_backwards(int inc, int direction);
+void move_player_sideways(int inc, int direction);
+void increment_viewing_angle(int inc);
+int load_all_textures(SDL_Renderer* gRenderer, SDL_Texture **wallTexture, SDL_Texture **floorTexture,  __attribute__ ((unused)) SDL_Texture **ceilingTexture, SDL_Texture **wTexture);
+void draw_rain(SDL_Renderer* gRenderer, int index);
+void draw_first_person(SDL_Renderer* gRenderer, SDL_Texture *wTexture);
+void draw_floor(SDL_Renderer* gRenderer, int projected_height_half, float angle, float rel_angle, SDL_Texture *floorTexture, SDL_Rect fcSrcRect, SDL_Rect fcDestRect);
+void draw_wall( SDL_Renderer* gRenderer, int i, float angle, float rel_angle, int *projected_height, SDL_Rect wallSrcRect, SDL_Rect wallDestRect, SDL_Texture *wallTexture);
+void draw_map(SDL_Renderer* gRenderer);
+void handle_events(const Uint8 *keystates, SDL_Event e, int *quit, int *showmap);

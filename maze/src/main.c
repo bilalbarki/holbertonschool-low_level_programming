@@ -3,8 +3,16 @@
 #include <math.h>
 #include <SDL2/SDL_image.h>
 #include "../inc/description.h"
-#include "../inc/player.h"
+#include "../inc/camera.h"
+#include "../inc/prototypes.h"
+#include "../inc/definitions.h"
 
+/**
+ * main function
+ * @argc: number of input arguments
+ * @**args: 2d array to input arguments
+ * RETURNS: returns 0 if all goes well, 1 if there is an error in some texture loading
+ */
 int main( __attribute__ ((unused)) int argc, __attribute__ ((unused)) char* args[] )
 {
     SDL_Window* window = NULL;

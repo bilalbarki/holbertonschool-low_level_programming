@@ -1,6 +1,12 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+/**
+ * Returns a loaded texture
+ * @*path: A string containing the filepath for the texture
+ * @*renderTarget: render target for the texture
+ * RETURNS: returns an SDL_texture containing the texture given by the filepath
+ */
 SDL_Texture *loadTexture(char *path, SDL_Renderer *renderTarget) {
     SDL_Texture *texture = NULL;
     //SDL_Surface *surface = SDL_LoadBMP(path);
@@ -16,7 +22,16 @@ SDL_Texture *loadTexture(char *path, SDL_Renderer *renderTarget) {
     return texture;
 }
 
-int load_all_textures(SDL_Renderer* gRenderer, SDL_Texture **wallTexture, SDL_Texture **floorTexture,  __attribute__ ((unused)) SDL_Texture **ceilingTexture, SDL_Texture **wTexture) {
+/**
+ * Loads all main textures
+ * @*gRenderer: @gRenderer: the main renderer
+ * @**wallTexture: pointer to a pointer of wall texture
+ * @**floorTexture: pointer to a pointer of floor texture
+ * @**ceilingTexture: pointer to a pointer to ceiling texture
+ * @**wTexture: pointer to a pointer to first person texture
+ * RETURNS: returns 0 if all goes well, 1 if there is an error in some texture loading
+ */
+int load_all_textures(SDL_Renderer* gRenderer, SDL_Texture **wallTexture, SDL_Texture **floorTexture,  SDL_Texture **ceilingTexture, SDL_Texture **wTexture) {
     *wallTexture = loadTexture("textures/marble.bmp", gRenderer);
     if (*wallTexture == NULL) {
         printf("Wall texture loading error");

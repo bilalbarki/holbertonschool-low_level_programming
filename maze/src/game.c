@@ -1,18 +1,34 @@
 #include <SDL2/SDL.h>
 #include "../inc/description.h"
+#include "../inc/definitions.h"
+#include "../inc/prototypes.h"
 
+/**
+ * Called upon exiting the game
+ * @window: SDL window
+ * @gRenderer: SDL renderer
+ * @wallTexture: SDL texture used for walls
+ * @ceilingTexture: SDL texture used for ceilings
+ * @wTexture: SDL texture for first person
+ */
 void quit_game(SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallTexture,SDL_Texture *ceilingTexture, SDL_Texture *wTexture)
 {
     free(wallHit.x);
     free(wallHit.y);
+    /*free all textures*/
     SDL_DestroyTexture( wTexture );
     SDL_DestroyTexture( ceilingTexture );
     SDL_DestroyTexture( wallTexture );
+    /*free renderer*/
     SDL_DestroyRenderer( gRenderer );
+    /*free window*/
     SDL_DestroyWindow( window );
     SDL_Quit();
 }
 
+/**
+ * Description: Frees everything before quiting
+ */
 void setValuesForPlayer() {
     player.FOV = 60;
     player.height = 0;
@@ -24,6 +40,10 @@ void setValuesForPlayer() {
     piRadRatio = M_PI/180;
 }
 
+/**
+ * Keeps angle between 0-359
+ * @raw_angle: raw angle that will be converted to 0-359 range
+ */
 float convertAngleZeroToThreeSixty(float raw_angle)
 {
     if (raw_angle < 0) 
@@ -40,50 +60,17 @@ float convertAngleZeroToThreeSixty(float raw_angle)
     }
 }
 
-void handle_events(const Uint8 *keystates, SDL_Event e, int *quit, int *showmap)
+/**
+ * This contains the main game loop
+ * @window: SDL window - should already be initialized
+ * @gRenderer: SDL renderer - should already be initialized
+ * @wallTexture: SDL texture used for walls, should be NULL
+ * @ceilingTexture: SDL texture used for ceilings, should be NULL
+ * @wTexture: SDL texture for first person, should be NULL
+ */
+int gameloop( SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallTexture, SDL_Texture *floorTexture,  SDL_Texture *ceilingTexture, SDL_Texture *wTexture )
 {
-    //Handle events on queue
-    while( SDL_PollEvent( &e ) != 0 )
-    {
-        //User requests quit
-        if( e.type == SDL_QUIT )
-        {
-            *quit = False;
-        }
-
-        //User presses a key
-        else if( e.type == SDL_KEYDOWN )
-        {
-            switch( e.key.keysym.sym )
-            {
-                case SDLK_m:
-                *showmap = !*showmap;
-                break;
-            }
-
-        }
-
-    }
-
-    if( keystates[ SDL_SCANCODE_UP ] )
-        movePlayer(move_step_pos, 0);
-    if( keystates[ SDL_SCANCODE_DOWN ] )
-        movePlayer(move_step_neg, 180);
-    if( keystates[ SDL_SCANCODE_RIGHT ] )
-        movePlayerSideways(move_step_neg,-90 );
-    if( keystates[ SDL_SCANCODE_LEFT ] )
-        movePlayerSideways(move_step_pos, 90);
-    if( keystates[ SDL_SCANCODE_Z ] )
-        viewingangleinc(move_step_pos);
-    if( keystates[  SDL_SCANCODE_X ] )
-        viewingangleinc(move_step_neg);
-}
-
-
-int gameloop( SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallTexture, SDL_Texture *floorTexture,  __attribute__ ((unused)) SDL_Texture *ceilingTexture, SDL_Texture *wTexture )
-{
-
-    int i, projected_height, projected_height_half, SCREEN_HEIGHT_HALF, showmap = True, quit = True;
+    int i, projected_height, projected_height_half, SCREEN_HEIGHT_HALF, showmap = TRUE, quit = TRUE;
     const Uint8 *keystates = SDL_GetKeyboardState(NULL);
     float angle, rel_angle, raw_angle;
     SDL_Event e;
@@ -91,7 +78,7 @@ int gameloop( SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallText
 
     SCREEN_HEIGHT_HALF = SCREEN_HEIGHT/2;
     
-    wallSrcRect.h = block_size; wallSrcRect.w = 1; wallSrcRect.y = 0; 
+    wallSrcRect.h = BLOCK_SIZE; wallSrcRect.w = 1; wallSrcRect.y = 0; 
     wallDestRect.w = 1;
     fcSrcRect.h = 1; fcSrcRect.w = 1; 
     fcDestRect.h = 1; fcDestRect.w = 1;
@@ -124,13 +111,13 @@ int gameloop( SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallText
             SDL_SetTextureAlphaMod( ceilingTexture,150 );
             SDL_RenderCopy(gRenderer, ceilingTexture,&ceilingSRC, &ceilingSRC);
 
-            rain(gRenderer, i);
+            draw_rain(gRenderer, i);
     }
-    weatexture(gRenderer, wTexture);
+    draw_first_person(gRenderer, wTexture);
 
     if (showmap)
     {
-        showMap(gRenderer);
+        draw_map(gRenderer);
     }
 
     SDL_RenderPresent( gRenderer );

@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include "../inc/description.h"
+#include "../inc/definitions.h"
 
 int readfromfile(char *path) {
     int  i=0, j=0;
