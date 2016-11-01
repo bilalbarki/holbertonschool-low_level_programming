@@ -1,6 +1,14 @@
-#define move_step_pos 10
-#define move_step_neg -10
-#define True 1
-#define False 0
-#define block_size 64
-#define VIEW_DISTANCE 400
+#include "camera.h"
+#include "wallhits.h"
+
+//Screen dimension constants
+extern const int SCREEN_WIDTH;
+extern const int SCREEN_HEIGHT;
+extern struct camera player;
+extern float piRadRatio;
+extern struct wallHits wallHit;
+extern int mapWidth;
+extern int mapHeight;
+extern int **worldMap;
+
+

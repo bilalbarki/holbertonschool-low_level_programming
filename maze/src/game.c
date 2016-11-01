@@ -1,5 +1,5 @@
 #include <SDL2/SDL.h>
-#include "../inc/description.h"
+#include "../inc/extern.h"
 #include "../inc/definitions.h"
 #include "../inc/prototypes.h"
 
@@ -13,6 +13,14 @@
  */
 void quit_game(SDL_Window* window, SDL_Renderer* gRenderer, SDL_Texture *wallTexture,SDL_Texture *ceilingTexture, SDL_Texture *wTexture)
 {
+    int i;
+    for (i=0 ; worldMap[i] ; i++)
+    {
+        free(worldMap[i]);
+    }
+    free(worldMap[i]);
+    free(worldMap);
+    
     free(wallHit.x);
     free(wallHit.y);
     /*free all textures*/

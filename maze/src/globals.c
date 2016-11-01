@@ -1,4 +1,4 @@
-#include "../inc/description.h"
+#include "../inc/extern.h"
 #include "../inc/definitions.h"
 
 /*Screen dimension constants*/
@@ -10,4 +10,4 @@ float piRadRatio;
 struct wallHits wallHit;
 int mapWidth;
 int mapHeight;
-int worldMap[100][100];
+int **worldMap;

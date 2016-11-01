@@ -3,7 +3,7 @@ float horizontal_distance(float angle, float rel_angle, int);
 float vertical_distance(float angle, float rel_angle, int);
 float convertAngleZeroToThreeSixty(float raw_angle);
 int detectCollision(int direction);
-int readfromfile(char *path);
+int initialize_world_map(char *path);
 SDL_Texture *loadTexture(char *path, SDL_Renderer *renderTarget);
 void setValuesForPlayer();
 float convertAngleZeroToThreeSixty(float raw_angle);

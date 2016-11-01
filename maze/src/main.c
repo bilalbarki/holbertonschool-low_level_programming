@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <SDL2/SDL_image.h>
-#include "../inc/description.h"
+#include "../inc/extern.h"
 #include "../inc/camera.h"
 #include "../inc/prototypes.h"
 #include "../inc/definitions.h"
@@ -21,8 +21,7 @@ int main( __attribute__ ((unused)) int argc, __attribute__ ((unused)) char* args
     SDL_Texture *ceilingTexture= NULL;
     SDL_Texture *wTexture= NULL;
     int imgFlags = IMG_INIT_PNG;
-
-    readfromfile("maps/map.txt");
+    initialize_world_map("maps/map.txt");
     SDL_Renderer* gRenderer = NULL;
 
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
