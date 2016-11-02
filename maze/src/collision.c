@@ -10,8 +10,9 @@
  * RETURN: returns 1 upon detecting a collision, else returns 0 if no collision
  */
 int detectCollision(int direction) {
+    int i;
     float raw_angle = player.viewing_angle + direction;
-    for (int i=0; i<20; i++, raw_angle ++)
+    for (i=0; i<20; i++, raw_angle ++)
     {
         float angle;
         int distance;

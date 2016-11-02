@@ -8,7 +8,7 @@
  */
 void increment_viewing_angle(int inc) 
 {
-	int angle = player.viewing_angle;
+  int angle = player.viewing_angle;
     angle += inc;
     player.viewing_angle = convertAngleZeroToThreeSixty(angle);
 }
