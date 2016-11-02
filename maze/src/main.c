@@ -50,6 +50,7 @@ int main( __attribute__ ((unused)) int argc, __attribute__ ((unused)) char* args
         }
         else 
         {
+            printf("Use up, down, left, right arrow keys, z, x for viewing angle, and m for map enable/disable\n");
             SDL_SetRenderDrawBlendMode(gRenderer, SDL_BLENDMODE_BLEND);
             wallHit.x = malloc(sizeof(int)*SCREEN_WIDTH);
             wallHit.y = malloc(sizeof(int)*SCREEN_WIDTH);
