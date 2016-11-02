@@ -9,6 +9,7 @@
  * @index: This is the current column index of the screen we are working on, it is same as the iterator for the main game loop, see game.c
  */
 void draw_rain(SDL_Renderer* gRenderer, int index) {
+    /*randomly places a white semitransparent rectangle on the current screen horizontal index*/
     SDL_Rect rain_rect;
     rain_rect.w = rand()%5;
     rain_rect.h = 15-rand()%10;
@@ -30,10 +31,11 @@ void draw_first_person(SDL_Renderer* gRenderer, SDL_Texture *wTexture) {
     wsrc.y = 0;
     wsrc.x = 0;
 
-    wdest.w = 180;
-    wdest.h = 160;
-    wdest.y = SCREEN_HEIGHT - 160;
-    wdest.x = SCREEN_WIDTH>>1;
+    
+    wdest.h = SCREEN_HEIGHT/2;
+    wdest.w = wdest.h*1.19602;
+    wdest.y = SCREEN_HEIGHT - wdest.h;
+    wdest.x = SCREEN_WIDTH - wdest.w;
 
     SDL_RenderCopy(gRenderer, wTexture,&wsrc, &wdest);
 }
@@ -54,18 +56,17 @@ void draw_floor(SDL_Renderer* gRenderer, int projected_height_half, float angle,
     float floordistance;
     for (y=SCREEN_HEIGHT/2+projected_height_half; y<SCREEN_HEIGHT; y++)
     {
+        /*floor distance calculated through linear interpolation*/
         floordistance = BLOCK_SIZE*( (SCREEN_HEIGHT) / (2.0 * y - SCREEN_HEIGHT) );
-
         if (floordistance < VIEW_DISTANCE)
         {
             SDL_SetTextureAlphaMod( floorTexture, 255 - ( (floordistance)/VIEW_DISTANCE * 255 ) );
-            //cosecant for removing fish-eye effect on floor
+            /*cosecant for removing fish-eye effect on floor*/
             floordistance *= 1.0 / ( cos(piRadRatio*rel_angle) );
             fcSrcRect.x = (int) ( player.x + floordistance*cos(piRadRatio*angle) ) % 64;
             fcSrcRect.y = (int) ( player.y - floordistance*sin(piRadRatio*angle) ) % 64;
             fcDestRect.y = y;
             SDL_RenderCopy(gRenderer, floorTexture,&fcSrcRect, &fcDestRect);
-
         }
     }
 }
@@ -83,13 +84,17 @@ void draw_floor(SDL_Renderer* gRenderer, int projected_height_half, float angle,
  */
 void draw_wall( SDL_Renderer* gRenderer, int index, float angle, float rel_angle, int *projected_height, SDL_Rect wallSrcRect, SDL_Rect wallDestRect, SDL_Texture *wallTexture)
 {
+    /*calculate ray distance, this function will give us the shortest distance from vertical and horizontal intersection*/
     wallHit.distance = ray_distance(angle, rel_angle, index);
     wallSrcRect.x = wallHit.texture_offset;
 
+    /*projected height that will be projected on the screen*/
     *projected_height = ceil( (BLOCK_SIZE)/(wallHit.distance) * player.distanceFromProjectionPlane);
     wallDestRect.h = *projected_height;
     wallDestRect.x = index;
     wallDestRect.y = SCREEN_HEIGHT/2-*projected_height/2; //SCREEN_HEIGHT/2-projected_height/2
+    
+    /*if the distance is within VIEW_DISTANCE*/
     if (wallHit.distance < VIEW_DISTANCE)
     {
         SDL_SetTextureAlphaMod( wallTexture, 255-( (wallHit.distance)/VIEW_DISTANCE * 255 ) );

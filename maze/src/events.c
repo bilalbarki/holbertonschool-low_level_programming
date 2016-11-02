@@ -11,16 +11,16 @@
  */
 void handle_events(const Uint8 *keystates, SDL_Event e, int *quit, int *showmap)
 {
-    //Handle events on queue
+    /*Handle events on queue*/
     while( SDL_PollEvent( &e ) != 0 )
     {
-        //User requests quit
+        /*User requests quit*/
         if( e.type == SDL_QUIT )
         {
             *quit = FALSE;
         }
 
-        //User presses a key
+        /*User presses a key*/
         else if( e.type == SDL_KEYDOWN )
         {
             switch( e.key.keysym.sym )
@@ -33,7 +33,7 @@ void handle_events(const Uint8 *keystates, SDL_Event e, int *quit, int *showmap)
         }
 
     }
-
+    /*all major player movements*/
     if( keystates[ SDL_SCANCODE_UP ] )
         move_player_front_backwards(MOVE_STEP_POS, 0);
     if( keystates[ SDL_SCANCODE_DOWN ] )

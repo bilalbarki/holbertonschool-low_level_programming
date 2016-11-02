@@ -26,7 +26,7 @@ void draw_map(SDL_Renderer* gRenderer)
         screen_coord2.x = 0;
         for (j=0; j<worldMap.width; j++)
         {
-            if (worldMap.map[i][j] == 1)
+            if (worldMap.map[i][j] > 0)
                 SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
             else
                 SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
@@ -49,7 +49,7 @@ void draw_map(SDL_Renderer* gRenderer)
     position.h = SCALE;
     SDL_RenderFillRect(gRenderer, &position);
 
-    SDL_SetRenderDrawColor(gRenderer, 155, 155, 255, 100);
+    SDL_SetRenderDrawColor(gRenderer, 155, 155, 255, 255);
     for (i=0; i<SCREEN_WIDTH; i++)
     {
         SDL_RenderDrawLine( gRenderer, player.x*SCALE/BLOCK_SIZE, player.y*SCALE/BLOCK_SIZE, wallHit.x[i]*SCALE/BLOCK_SIZE, wallHit.y[i]*SCALE/BLOCK_SIZE );

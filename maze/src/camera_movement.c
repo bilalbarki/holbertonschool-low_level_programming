@@ -22,6 +22,7 @@ void move_player_front_backwards(int inc, int rel_direction)
 {
     if (!detectCollision(rel_direction)) 
     {
+        /*depending on the current viewing angle, the player movement has to be projected as x and y separately*/
        	player.x += inc*cos(piRadRatio*player.viewing_angle);
         player.y -= inc*sin(piRadRatio*player.viewing_angle);
     }
@@ -36,6 +37,7 @@ void move_player_sideways(int inc, int rel_direction)
 {
     if (!detectCollision(rel_direction)) 
     {
+        /*depending on the current viewing angle, the player movement has to be projected as x and y separately*/
        	player.x += inc*cos( piRadRatio* (player.viewing_angle + 90) );
         player.y -= inc*sin( piRadRatio* (player.viewing_angle + 90) );
     }
