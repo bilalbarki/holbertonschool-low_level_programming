@@ -11,7 +11,7 @@ COMPILER_FLAGS = -Wall -Werror -Wextra -pedantic
 LINKER_FLAGS = `sdl2-config --cflags --libs` -lm -lSDL2_image
 
 #OBJ_NAME specifies the name of our exectuable
-OBJ_NAME = a.out
+OBJ_NAME = maze
 
 #This is the target that compiles our executable
 all : $(OBJS)
